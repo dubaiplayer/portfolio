@@ -1,0 +1,42 @@
+
+.navbar_topleftCTA{
+    position: absolute;
+    top: 1.25rem;
+    left: 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    
+}
+
+
+.navbar_subcontainer{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar_element{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1rem;
+}
+
+.navbar_element_top{
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+}
+
+.navbar_element_link{
+    letter-spacing: 0.125rem;
+}
