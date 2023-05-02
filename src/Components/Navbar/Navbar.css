@@ -1,6 +1,7 @@
 
 .navbar_topleftCTA{
     position: absolute;
+    color: black;
     top: 1.25rem;
     left: 3rem;
     font-family: 'Poppins', sans-serif;
@@ -8,7 +9,6 @@
     font-size: 2rem;
     
 }
-
 
 .navbar_subcontainer{
     /* background-color: red; */
@@ -26,7 +26,7 @@
     align-items: flex-end;
     margin: 1rem;
     padding: 0.5rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1rem;

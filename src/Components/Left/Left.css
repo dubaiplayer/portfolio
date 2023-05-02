@@ -1,0 +1,28 @@
+
+.icon_container{
+    position: absolute;
+    left: 5vh;
+    bottom: 25vh;
+}
+
+.github_icon{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.email_icon{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.youtube_icon{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
