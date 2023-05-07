@@ -1,0 +1,15 @@
+
+.email_tag{
+    position: absolute;
+    right: -7vh;
+    bottom: 35vh;
+    font-family: 'Roboto Mono', monospace;
+    transform: rotate(90deg);
+}
+
+.line{
+    position: absolute;
+    right: 4vh;
+    bottom: 3vh;
+    height: 15vh;;
+}
