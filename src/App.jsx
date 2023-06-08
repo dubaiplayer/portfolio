@@ -1,20 +1,26 @@
 import { useState } from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css"
-import { Navbar } from "./Components/Navbar/Navbar.jsx"
-import { Left } from "./Components/Left/Left.jsx"
-import { Right } from "./Components/Right/Right.jsx"
-import { Center} from "./Components/Center/Center.jsx"
+import { Expertise } from "./Expertise/Expertise"
+import { Homepage } from './homepage/homepage'
 
 function App() {
  
-
+  const Routing = () => {
+    return(
+      <Routes>
+      <Route path="/" index={true} element={<Homepage />} />
+      <Route path="/expertise" index={true} element={<Expertise />} />
+      {/* <Route path="/work" index={true} element={<Work />} />
+      <Route path="/experience" index={true} element={<Experience />} />
+      <Route path="/contact" index={true} element={<Contact />} /> */}
+    </Routes>
+    )
+  }
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <Left></Left>
-      <Right></Right>
-      <Center></Center>
-    </div>
+    <BrowserRouter>
+    <Routing />
+    </BrowserRouter>
   )
 }
 

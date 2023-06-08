@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Navbar.css"
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -8,26 +9,41 @@ export const Navbar = () => {
             Devesh Gupta
         </div>
         <div className='navbar_subcontainer'>
-            <a href='' className="navbar_element">
+
+        <Link to="/">
+            <div className="navbar_element">
                 <div className='navbar_element_top'>01</div>
                 <div className='navbar_element_link'>//home</div>
-            </a>
-            <a href='' className="navbar_element">
+            </div>
+        </Link>
+
+        <Link to="/expertise">
+            <div className="navbar_element">
                 <div className='navbar_element_top'>02</div>
                 <div className='navbar_element_link'>//expertise</div>
-            </a>
-            <a href='' className="navbar_element">
+            </div>
+        </Link>
+
+        <Link to="/work">
+            <div className="navbar_element">
                 <div className='navbar_element_top'>03</div>
                 <div className='navbar_element_link'>//work</div>
-            </a>
-            <a href='' className="navbar_element">
+            </div>
+        </Link>
+
+        <Link to="/experience">
+            <div className="navbar_element">
                 <div className='navbar_element_top'>04</div>
                 <div className='navbar_element_link'>//experience</div>
-            </a>
-            <a href='' className="navbar_element">
+            </div>
+        </Link>
+
+        <Link to="/contact">
+            <div className="navbar_element">
                 <div className='navbar_element_top'>05</div>
                 <div className='navbar_element_link'>//contact</div>
-            </a>
+            </div>
+        </Link>
         </div>
     </div>
   )
