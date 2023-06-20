@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css"
 import { Expertise } from "./Expertise/Expertise"
-import { Homepage } from './homepage/homepage'
+import { Homepage } from './Homepage/Homepage'
 import { Work } from "./Work/Work"
 import { Experience } from "./Experience/Experience"
 import { Contact } from "./Contact/Contact"
