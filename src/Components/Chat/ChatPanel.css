@@ -1,0 +1,286 @@
+/* Panel interior — ships in the lazy chunk alongside ChatPanel.jsx. */
+
+.dgchat_sr_only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* -- Header --------------------------------------------------------------- */
+
+.dgchat_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--dg-line);
+}
+
+.dgchat_title {
+    font-family: var(--dg-ui);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dg-ink);
+}
+
+.dgchat_disclosure {
+    margin-top: 0.15rem;
+    font-family: var(--dg-mono);
+    font-size: 0.65rem;
+    color: var(--dg-ink-soft);
+}
+
+.dgchat_header_actions { display: flex; gap: 0.25rem; flex-shrink: 0; }
+
+.dgchat_icon_btn {
+    width: 28px; height: 28px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--dg-ink-soft);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.dgchat_icon_btn:hover { background: #f2f2f2; color: var(--dg-ink); }
+.dgchat_icon_btn:focus-visible { outline: 2px solid var(--dg-blue); outline-offset: 1px; }
+
+/* -- Transcript ----------------------------------------------------------- */
+
+.dgchat_list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    /* Stops a scroll at the top of the transcript from scrolling the page
+       behind the sheet. Paired with body{overflow:hidden} in ChatWidget.jsx. */
+    overscroll-behavior: contain;
+    /* NEVER add scroll-behavior:smooth here — every update would become a
+       queued 300ms animation and the stick detection in useStickyScroll would
+       read positions mid-animation and lie. */
+}
+
+.dgchat_msg { margin-bottom: 0.9rem; display: flex; flex-direction: column; }
+.dgchat_msg_user { align-items: flex-end; }
+.dgchat_msg_bot { align-items: flex-start; }
+
+.dgchat_msg_text {
+    max-width: 88%;
+    padding: 0.55rem 0.8rem;
+    border-radius: 0.85rem;
+    font-family: var(--dg-ui);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    /* Model output is rendered as plain text, never markdown/HTML. */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    user-select: text;
+}
+
+.dgchat_msg_user .dgchat_msg_text {
+    background: var(--dg-grad);
+    color: #fff;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.dgchat_msg_bot .dgchat_msg_text {
+    background: #f6f6f7;
+    color: var(--dg-ink);
+    border-bottom-left-radius: 0.25rem;
+}
+
+.dgchat_caret {
+    display: inline-block;
+    width: 0.5ch; height: 1em;
+    margin-left: 1px;
+    background: currentColor;
+    vertical-align: text-bottom;
+    animation: dgchat_blink 1s steps(2, start) infinite;
+}
+
+@keyframes dgchat_blink { to { visibility: hidden; } }
+
+.dgchat_stopped { color: var(--dg-ink-soft); font-style: italic; }
+
+/* -- Typing indicator ----------------------------------------------------- */
+
+.dgchat_typing {
+    display: flex; gap: 4px;
+    padding: 0.75rem 0.8rem;
+    background: #f6f6f7;
+    border-radius: 0.85rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.dgchat_typing span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--dg-ink-soft);
+    animation: dgchat_bounce 1.2s infinite ease-in-out;
+}
+.dgchat_typing span:nth-child(2) { animation-delay: 0.15s; }
+.dgchat_typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes dgchat_bounce {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30%           { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* -- Empty state ---------------------------------------------------------- */
+
+.dgchat_empty_lead {
+    font-family: var(--dg-ui);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--dg-ink-soft);
+    margin-bottom: 0.9rem;
+}
+
+.dgchat_suggestions { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+.dgchat_suggestion {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 0.6rem;
+    background: transparent;
+    font-family: var(--dg-mono);
+    font-size: 0.76rem;
+    color: var(--dg-ink);
+    cursor: pointer;
+    transition: border-color 140ms ease;
+}
+.dgchat_suggestion:hover { border-color: var(--dg-pink); }
+.dgchat_suggestion:focus-visible { outline: 2px solid var(--dg-blue); outline-offset: 1px; }
+
+/* -- Sources -------------------------------------------------------------- */
+
+.dgchat_sources {
+    list-style: none;
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0.45rem 0 0;
+    max-width: 88%;
+}
+
+.dgchat_source {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 999px;
+    font-family: var(--dg-mono);
+    font-size: 0.68rem;
+    color: var(--dg-ink-soft);
+    text-decoration: none;
+    cursor: pointer;
+}
+.dgchat_source:hover { border-color: var(--dg-pink); color: var(--dg-ink); }
+
+/* -- Errors --------------------------------------------------------------- */
+
+.dgchat_error {
+    display: flex; flex-direction: column; gap: 0.35rem;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.9rem;
+    border: 1px solid #f0c9d2;
+    border-radius: 0.6rem;
+    background: #fff5f7;
+    font-family: var(--dg-ui);
+    font-size: 0.8rem;
+    color: var(--dg-ink);
+}
+
+.dgchat_error_actions { display: flex; gap: 0.75rem; }
+
+.dgchat_link_btn {
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: var(--dg-mono);
+    font-size: 0.75rem;
+    color: var(--dg-pink);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* -- Jump to latest ------------------------------------------------------- */
+
+.dgchat_jump {
+    position: absolute;
+    left: 50%;
+    bottom: 4.5rem;
+    transform: translateX(-50%);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 999px;
+    background: var(--dg-bg);
+    font-family: var(--dg-mono);
+    font-size: 0.72rem;
+    color: var(--dg-ink);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    /* The one place smooth scrolling is appropriate. */
+    scroll-behavior: smooth;
+}
+
+/* -- Composer ------------------------------------------------------------- */
+
+.dgchat_composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    border-top: 1px solid var(--dg-line);
+}
+
+.dgchat_input {
+    flex: 1;
+    resize: none;
+    border: 1px solid var(--dg-line);
+    border-radius: 0.7rem;
+    padding: 0.5rem 0.65rem;
+    font-family: var(--dg-ui);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--dg-ink);
+    background: var(--dg-bg);
+    max-height: 6rem;
+    /* Overrides the global custom-cursor image from main.css. */
+    cursor: text;
+}
+.dgchat_input:focus { outline: none; border-color: var(--dg-blue); }
+
+.dgchat_count {
+    font-family: var(--dg-mono);
+    font-size: 0.65rem;
+    color: var(--dg-ink-soft);
+    padding-bottom: 0.6rem;
+}
+
+.dgchat_send {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: var(--dg-grad);
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.dgchat_send:disabled { opacity: 0.35; cursor: default; }
+.dgchat_send:focus-visible { outline: 2px solid var(--dg-blue); outline-offset: 2px; }
+
+@media (max-width: 640px) {
+    /* Comfortable tap targets on the sheet. */
+    .dgchat_send { width: 44px; height: 44px; }
+    .dgchat_icon_btn { width: 40px; height: 40px; }
+    .dgchat_msg_text { max-width: 92%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dgchat_caret,
+    .dgchat_typing span { animation: none; }
+    .dgchat_suggestion { transition: none; }
+}

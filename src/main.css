@@ -4,3 +4,71 @@
     box-sizing: border-box;
     cursor: url('../src/assets/cursor.png') auto;
 }
+
+/* ── Design tokens ──────────────────────────────────────────────────────────
+   Extracted so the brand gradient isn't copy-pasted into every new component.
+   The gradient's source of truth was #title in homepage/Center/Center.css.
+
+   Contrast note: --dg-pink on white is ~3.4:1, which fails WCAG AA for body
+   text. Use --dg-grad for headings and decorative borders only; body copy
+   uses --dg-ink. */
+:root {
+  --dg-pink: #fc5c7d;
+  --dg-blue: #6a82fb;
+  --dg-grad: linear-gradient(45deg, #fc5c7d, #6a82fb, #fc5c7d);
+
+  --dg-ink: #111;
+  --dg-ink-soft: #5a5a5a;
+  --dg-line: #e6e6e6;
+  --dg-bg: #fff;
+
+  --dg-ui: 'Poppins', sans-serif;
+  --dg-mono: 'Roboto Mono', monospace;
+}
+
+/* Minimal shell for the pages that are still stubs — clears the absolutely
+   positioned .navbar_topleftCTA so their content isn't hidden beneath it. */
+.page_shell {
+  min-height: 100vh;
+  padding: 5rem 3rem 4rem;
+  background: var(--dg-bg);
+}
+
+/* ── Shared chip ────────────────────────────────────────────────────────────
+   Extracted from .work_card_chip so /expertise and /experience don't each
+   re-fork the same four rules. .work_card_chip stays as-is: the Work page is
+   the one fully-working page and isn't worth the churn. */
+.dg_chip {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--dg-line);
+  border-radius: 999px;
+  font-family: var(--dg-mono);
+  font-size: 0.72rem;
+  color: var(--dg-ink-soft);
+  white-space: nowrap;
+}
+
+.dg_chip_muted {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
+/* ── Shared entrance animation ──────────────────────────────────────────────
+   Same 0.6s fade Work.css defines as .work_fadeIn, hoisted so the other pages
+   can use it without importing Work.css. Work keeps its own copy; it isn't
+   worth churning the one page that already works. */
+.dg_fadeIn {
+  animation-name: dg_fade;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+@keyframes dg_fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg_fadeIn { animation: none; }
+}

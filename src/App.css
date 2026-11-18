@@ -1,5 +1,4 @@
-.App{
-    background-color: white;
-    height: 100vh;
-    overflow: hidden; 
-}
+/* NOTE: the old `.App { height:100vh; overflow:hidden }` rule was dead code —
+   no element ever set className="App". It is deliberately not revived: that
+   overflow:hidden would break the scrolling Work page and clip the chat panel.
+   Left as a file (rather than deleted) because App.jsx imports it. */

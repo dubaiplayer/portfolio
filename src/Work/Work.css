@@ -1,0 +1,192 @@
+/* The homepage uses absolute positioning with hardcoded pixel offsets, which is
+   fine for a fixed hero of five known elements. This page is the opposite: the
+   number of projects is unknown at design time, card heights depend on content,
+   and it has to scroll. So it uses normal flow + grid. Visual consistency comes
+   from the type and colour vocabulary, not from the layout mechanism. */
+
+.work_page {
+    min-height: 100vh;
+    background: var(--dg-bg);
+    /* clears .navbar_topleftCTA, which is absolutely positioned at top:1.25rem */
+    padding: 5rem 3rem 6rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.work_hero {
+    max-width: 1100px;
+    margin: 2rem auto 2.5rem;
+}
+
+.work_kicker {
+    font-family: var(--dg-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.125rem;
+    color: var(--dg-ink-soft);
+    margin-bottom: 0.5rem;
+}
+
+.work_title {
+    font-family: var(--dg-ui);
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    background: var(--dg-grad);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Same keyframes as the homepage's .fadeIn, but 0.6s instead of 5s. Five
+   seconds suits a hero you land on; it's far too slow for a page you navigate
+   to and expect to read. */
+.work_fadeIn {
+    animation-name: work_fade;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+@keyframes work_fade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+
+/* auto-fill + minmax gives 3 -> 2 -> 1 columns with no media queries at all. */
+.work_grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+
+.work_card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 0.75rem;
+    background: var(--dg-bg);
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.work_card:hover {
+    transform: translateY(-3px);
+    border-color: var(--dg-pink);
+}
+
+.work_card_head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.work_card_title {
+    font-family: var(--dg-ui);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--dg-ink);
+}
+
+.work_card_status {
+    flex-shrink: 0;
+    font-family: var(--dg-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+    color: var(--dg-ink-soft);
+}
+
+.work_card_status_live { color: #1a7f4b; }
+.work_card_status_wip { color: #a15c00; }
+
+.work_card_meta {
+    margin-top: 0.25rem;
+    font-family: var(--dg-mono);
+    font-size: 0.75rem;
+    color: var(--dg-ink-soft);
+}
+
+.work_card_tagline {
+    margin-top: 0.75rem;
+    font-family: var(--dg-ui);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--dg-ink);
+}
+
+.work_card_tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.work_card_chip {
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 999px;
+    font-family: var(--dg-mono);
+    font-size: 0.72rem;
+    color: var(--dg-ink-soft);
+}
+
+/* pushes the link row to the bottom so cards of different heights line up */
+.work_card_links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+}
+
+.work_card_links a {
+    font-family: var(--dg-mono);
+    font-size: 0.8rem;
+    color: var(--dg-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--dg-pink);
+    padding-bottom: 1px;
+    /* main.css sets a custom cursor image via `*` at specificity 0,0,0.
+       Children re-match `*` rather than inheriting, so the override has to
+       target the anchor directly. */
+    cursor: pointer;
+}
+
+.work_card_links a:hover {
+    color: var(--dg-pink);
+}
+
+/* ── Citation landing flash ───────────────────────────────────────────────── */
+
+/* Applied for ~1.2s when arriving at /work#project-<id> from a chat citation. */
+.work_card_flash {
+    animation: work_flash 1.2s ease-out;
+}
+
+@keyframes work_flash {
+    0%   { border-color: var(--dg-pink); box-shadow: 0 0 0 4px rgba(252, 92, 125, 0.18); }
+    100% { border-color: var(--dg-line); box-shadow: 0 0 0 0 rgba(252, 92, 125, 0); }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .work_page { padding: 5rem 1.25rem 4rem; }
+    .work_title { font-size: 2.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .work_fadeIn,
+    .work_card_flash { animation: none; }
+    .work_card { transition: none; }
+    .work_card:hover { transform: none; }
+}

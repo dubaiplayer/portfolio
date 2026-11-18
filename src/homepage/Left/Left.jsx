@@ -4,32 +4,40 @@ import Email from "../../assets/email.png"
 import Youtube from "../../assets/youtube.png"
 import Line from "../../assets/line.png"
 import "./Left.css"
+import { profile } from "../../data/profile"
 
 export const Left = () => {
   return (
     <div className="left">
           <div className="icon_container">
 
-          <a href="https://github.com/dubaiplayer" target="_blank">
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <div className="github_icon">
-                <img src={ Github }></img>
+                <img src={ Github } alt="" />
             </div>
           </a>
 
-          <a href="mailto:guptadevesh@hotmail.com" target="_blank">
+          <a href={`mailto:${profile.email}`} aria-label="Email">
             <div className="email_icon">
-                <img src={ Email }></img>
+                <img src={ Email } alt="" />
             </div>
           </a>
 
-            <div className="youtube_icon">
-                <img src={ Youtube }></img>
-            </div>
+            {/* Rendered as a link only once profile.links.youtube is set —
+                previously this icon was decorative with nothing behind it. */}
+            {profile.links.youtube ? (
+              <a href={profile.links.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <div className="youtube_icon">
+                    <img src={ Youtube } alt="" />
+                </div>
+              </a>
+            ) : null}
+
             <div>
-              <img src={ Line } className="leftLine"></img>
+              <img src={ Line } className="leftLine" alt="" />
             </div>
             </div>
     </div>
- 
+
   )
 }

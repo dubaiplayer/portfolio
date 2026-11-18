@@ -1,0 +1,235 @@
+/* Mirrors Work.css conventions rather than the homepage's absolute positioning:
+   content length is unknown at design time and the page scrolls. */
+
+.exp_page {
+    min-height: 100vh;
+    background: var(--dg-bg);
+    /* clears .navbar_topleftCTA, absolutely positioned at top:1.25rem */
+    padding: 5rem 3rem 6rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.exp_hero {
+    max-width: 820px;
+    margin: 2rem auto 2.5rem;
+}
+
+.exp_kicker {
+    font-family: var(--dg-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.125rem;
+    color: var(--dg-ink-soft);
+    margin-bottom: 0.5rem;
+}
+
+.exp_title {
+    font-family: var(--dg-ui);
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    background: var(--dg-grad);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.exp_lede {
+    margin-top: 1rem;
+    font-family: var(--dg-ui);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--dg-ink-soft);
+    max-width: 60ch;
+}
+
+.exp_availability {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--dg-line);
+    border-radius: 999px;
+    font-family: var(--dg-mono);
+    font-size: 0.78rem;
+    color: var(--dg-ink);
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+
+.exp_main {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.exp_section {
+    margin-bottom: 3.5rem;
+}
+
+.exp_h2 {
+    font-family: var(--dg-ui);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: var(--dg-ink);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--dg-line);
+}
+
+.exp_note {
+    font-family: var(--dg-ui);
+    font-size: 0.9rem;
+    color: var(--dg-ink-soft);
+    margin-bottom: 1.25rem;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+
+.exp_card {
+    padding: 1.25rem 0 1.5rem;
+    border-bottom: 1px solid var(--dg-line);
+}
+
+.exp_card:last-child {
+    border-bottom: none;
+}
+
+.exp_card_head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.exp_card_title {
+    font-family: var(--dg-ui);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dg-ink);
+}
+
+.exp_card_dates {
+    font-family: var(--dg-mono);
+    font-size: 0.78rem;
+    color: var(--dg-ink-soft);
+}
+
+.exp_card_meta {
+    margin-top: 0.2rem;
+    font-family: var(--dg-mono);
+    font-size: 0.82rem;
+    color: var(--dg-ink-soft);
+}
+
+.exp_card_body {
+    margin-top: 0.75rem;
+    font-family: var(--dg-ui);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--dg-ink);
+    max-width: 65ch;
+}
+
+.exp_label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--dg-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+    color: var(--dg-ink-soft);
+}
+
+.exp_chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+}
+
+.exp_bullets {
+    margin-top: 0.75rem;
+    padding-left: 1.1rem;
+    font-family: var(--dg-ui);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--dg-ink);
+    max-width: 65ch;
+}
+
+.exp_bullets li {
+    margin-bottom: 0.35rem;
+}
+
+/* ── Projects ─────────────────────────────────────────────────────────────── */
+
+.exp_grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.exp_more {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: var(--dg-mono);
+    font-size: 0.82rem;
+    color: var(--dg-ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--dg-line);
+}
+
+.exp_more:hover {
+    color: var(--dg-ink);
+}
+
+/* ── FAQ ──────────────────────────────────────────────────────────────────── */
+
+/* <details>/<summary>: no JS, keyboard-accessible for free. */
+.exp_faq {
+    border-bottom: 1px solid var(--dg-line);
+    padding: 0.9rem 0;
+}
+
+.exp_faq_q {
+    font-family: var(--dg-ui);
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--dg-ink);
+    list-style: none;
+}
+
+.exp_faq_q::marker,
+.exp_faq_q::-webkit-details-marker {
+    display: none;
+}
+
+.exp_faq_q::before {
+    content: '+ ';
+    font-family: var(--dg-mono);
+    color: var(--dg-ink-soft);
+}
+
+.exp_faq[open] .exp_faq_q::before {
+    content: '- ';
+}
+
+.exp_faq_a {
+    margin-top: 0.6rem;
+    padding-left: 1.1rem;
+    font-family: var(--dg-ui);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--dg-ink-soft);
+    max-width: 65ch;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .exp_page { padding: 4.5rem 1.25rem 4rem; }
+    .exp_title { font-size: 2.25rem; }
+}

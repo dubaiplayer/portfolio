@@ -1,8 +1,10 @@
+/* .email_tag and .line are raised to clear the chat bubble, which is fixed
+   at right:1.5rem bottom:1.5rem with a 56px diameter (see Chat/ChatWidget.css). */
 
 .email_tag{
     position: absolute;
     right: -7vh;
-    bottom: 35vh;
+    bottom: 45vh;
     font-family: 'Roboto Mono', monospace;
     transform: rotate(90deg);
 }
@@ -10,6 +12,6 @@
 .line{
     position: absolute;
     right: 4vh;
-    bottom: 3vh;
-    height: 15vh;;
+    bottom: 14vh;
+    height: 15vh;
 }

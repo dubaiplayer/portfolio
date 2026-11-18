@@ -40,3 +40,12 @@
 .navbar_element_link{
     letter-spacing: 0.125rem;
 }
+
+/* There is no anchor reset anywhere in this project, so react-router <Link>
+   renders with the user-agent's blue underline. Scoped to the navbar on
+   purpose — a global `a` reset would also hit the image-wrapping anchors in
+   homepage/Left/Left.jsx. */
+.navbar_container a {
+    text-decoration: none;
+    color: inherit;
+}
