@@ -87,8 +87,9 @@ export const profile = {
   skills: {
     languages: ['Python', 'JavaScript', 'TypeScript'],
     frameworks: ['React', 'FastAPI', 'Express', 'Vite', 'Electron'],
-    libraries: ['scikit-learn', 'sentence-transformers'],
-    tools: ['Git', 'SQLite', 'Vercel', 'Node.js', 'Chrome Extension'],
+    libraries: ['scikit-learn', 'sentence-transformers', 'React Router'],
+    tools: ['Git', 'SQLite', 'Vercel', 'Vercel Functions', 'Node.js', 'Chrome Extension'],
+    techniques: ['RAG'],
   },
 
   /**
