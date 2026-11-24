@@ -63,7 +63,7 @@ all running locally, so no email ever leaves the machine.`,
     status: 'live',
     featured: true,
     year: 2026,
-    tech: ['Python', 'scikit-learn', 'FastAPI', 'Chrome Extension', 'Electron', 'React'],
+    tech: ['Python', 'JavaScript', 'scikit-learn', 'FastAPI', 'Chrome Extension', 'Electron', 'React', 'Git', 'Vercel'],
     tags: ['ml', 'security', 'explainability'],
     // The repo is named TIS but the product is PhishingNet — both must resolve.
     aliases: [
@@ -195,7 +195,7 @@ also resolves YouTube links and cover art for each recommendation.`,
     status: 'live',
     featured: true,
     year: 2026,
-    tech: ['Python', 'FastAPI', 'sentence-transformers', 'scikit-learn', 'TypeScript', 'React'],
+    tech: ['Python', 'JavaScript', 'FastAPI', 'sentence-transformers', 'scikit-learn', 'TypeScript', 'React', 'Git', 'Vercel'],
     tags: ['ml', 'recommender', 'nlp'],
     // Deployed as "Resonate"; the repo is `lyricmatcher` and the API calls
     // itself "Recommendr" — all three names have to resolve to this project.
