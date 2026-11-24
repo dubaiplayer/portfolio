@@ -29,7 +29,11 @@ const PER_PROJECT_CAP = 2;
  * corpus, and cosine below DENSE_FLOOR means nothing is semantically close.
  * When both are true the honest answer is an empty context.
  */
-const DENSE_FLOOR = 0.45;
+/* Calibrated for gemini-embedding-001 @ 768d (2026-11-24): off-topic queries
+   ("capital of France", "python script", "weather") peaked at 0.51–0.56, while
+   every real portfolio question scored 0.64–0.73. 0.45 let everything through.
+   Re-measure if the embedding model or dimensionality changes. */
+const DENSE_FLOOR = 0.6;
 
 const BOOST_AUTHORED = 1.6; // hand-written prose outranks scraped README noise
 const BOOST_NAMED = 2.0; // the query named this project outright
